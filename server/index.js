@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 // --- Middleware ---
-app.use(express.json()); // Parse JSON bodies
+app.use(express.json()); 
 
 // --- Handle CORS Preflight ---
 app.options("*", (req, res) => {
