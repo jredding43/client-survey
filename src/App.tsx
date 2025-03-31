@@ -4,7 +4,7 @@ import Home from "./pages/HomeContent";
 const App = () => {
 
   return (
-    <Router>
+    <Router basename="/client-survey">
       <Routes>
         <Route path="/" element={<Home /> } />
       </Routes>
