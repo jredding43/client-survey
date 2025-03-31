@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jredding43.github.io/client-survey",
+  "homepage": "https://feedback.r43digitaltech.com",
 
   "scripts": {
     "dev": "vite",
