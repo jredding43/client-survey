@@ -6,10 +6,14 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: "https://jredding43.github.io"
-}));
-app.use(express.json());
+const corsOptions = {
+  origin: "https://feedback.r43digitaltech.com",
+  methods: ["POST", "GET"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
 
 app.post('/survey', async (req, res) => {
   const { answers } = req.body;
