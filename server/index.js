@@ -8,21 +8,20 @@ const port = process.env.PORT || 5000;
 
 const corsOptions = {
   origin: "https://feedback.r43digitaltech.com",
-  methods: ["POST", "GET"],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
   credentials: true,
 };
 
-app.use(
-  cors({
-    origin: "*", 
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
-
+app.use(cors(corsOptions));
 app.use(express.json());
+app.options("*", cors());
 
-app.options('*', cors(corsOptions));
+// Log requests
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.path}`);
+  next();
+});
 
 
 app.post('/survey', async (req, res) => {
