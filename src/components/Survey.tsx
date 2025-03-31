@@ -104,7 +104,7 @@ const surveyQuestions = [
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ answers: responses }),
-          });          
+          });                
       
           if (response.ok) {
             setShowPopup(true);
