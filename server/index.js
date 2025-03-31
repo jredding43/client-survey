@@ -8,14 +8,13 @@ const port = process.env.PORT || 5000;
 
 // --- CORS Configuration ---
 const corsOptions = {
-  origin: "https://jredding43.github.io", // GitHub Pages domain
+  origin: "https://jredding43.github.io",
   methods: ["GET", "POST", "OPTIONS"],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Preflight support
-
+app.options("*", cors(corsOptions)); 
 // --- Middleware ---
 app.use(express.json());
 

@@ -100,11 +100,11 @@ const surveyQuestions = [
         setSubmitting(true);
       
         try {
-          const response = await fetch("https://feedback.r43digitaltech.com/survey", {
+          const response = await fetch("https://client-survey-backend.onrender.com/survey", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ answers: responses }),
-          });
+          });          
       
           if (response.ok) {
             setShowPopup(true);
