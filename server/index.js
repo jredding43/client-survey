@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 // --- POST: Submit Survey ---
-app.post("/survey", async (req, res) => {
+app.post("/submit-feedback", async (req, res) => {
   const { answers } = req.body;
   console.log("Received:", answers);
 

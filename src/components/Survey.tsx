@@ -100,7 +100,7 @@ const surveyQuestions = [
         setSubmitting(true);
       
         try {
-          const response = await fetch("https://client-survey-backend.onrender.com/survey", {
+          const response = await fetch("https://client-survey-backend.onrender.com/submit-feedback", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ answers: responses }),
