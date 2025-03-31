@@ -14,7 +14,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); 
+
+app.get("/", (req, res) => {
+  res.send("Backend is live and CORS is enabled!");
+});
+
+
 
 // --- Middleware ---
 app.use(express.json());
