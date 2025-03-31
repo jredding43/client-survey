@@ -15,14 +15,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// --- Manual CORS Preflight Handler ---
-app.options("/survey", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://feedback.r43digitaltech.com");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(204);
-});
-
 // --- Middleware ---
 app.use(express.json());
 
