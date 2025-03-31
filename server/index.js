@@ -8,18 +8,20 @@ const port = process.env.PORT || 5000;
 
 // --- CORS Configuration ---
 const corsOptions = {
-  origin: "https://feedback.r43digitaltech.com", 
+  origin: "https://feedback.r43digitaltech.com",
   methods: ["GET", "POST", "OPTIONS"],
-  credentials: true,
+  allowedHeaders: ["Content-Type"]
 };
 
 app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
-  res.send("Backend is live and CORS is enabled!");
+// --- Manual CORS Preflight Handler ---
+app.options("/survey", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://feedback.r43digitaltech.com");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.sendStatus(204);
 });
-
-
 
 // --- Middleware ---
 app.use(express.json());
@@ -28,6 +30,11 @@ app.use(express.json());
 app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.path}`);
   next();
+});
+
+// --- Root Health Check ---
+app.get("/", (req, res) => {
+  res.send("Backend is live and CORS is enabled!");
 });
 
 // --- POST: Submit Survey ---
