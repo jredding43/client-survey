@@ -13,21 +13,21 @@ app.use(express.json());
 
 app.post('/survey', async (req, res) => {
   const { answers } = req.body;
+  console.log(" Received form submission:", answers); 
 
   try {
-    console.log("Received survey answers:", answers);
-
     await pool.query(
       'INSERT INTO survey_responses (answers) VALUES ($1)',
       [JSON.stringify(answers)]
     );
-
+    console.log(" Inserted survey into database"); 
     res.status(200).send("Survey submitted successfully");
   } catch (err) {
-    console.error(err);
+    console.error(" DB INSERT ERROR:", err); 
     res.status(500).send("Error saving survey");
   }
 });
+
 
 app.get('/responses', async (req, res) => {
   try {
