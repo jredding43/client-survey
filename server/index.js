@@ -7,20 +7,17 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // --- CORS Configuration ---
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://feedback.r43digitaltech.com");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+const corsOptions = {
+  origin: "https://jredding43.github.io", // GitHub Pages domain
+  methods: ["GET", "POST", "OPTIONS"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Preflight support
 
 // --- Middleware ---
-app.use(express.json()); 
-
-// --- Handle CORS Preflight ---
-app.options("*", (req, res) => {
-  res.sendStatus(200);
-});
+app.use(express.json());
 
 // --- Request Logger ---
 app.use((req, res, next) => {
